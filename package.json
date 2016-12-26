@@ -18,7 +18,9 @@
   "homepage": "https://github.com/emkerber/dj_sms#readme",
   "dependencies": {
     "angular": "^1.6.0",
-    "angular-route": "^1.6.0"
+    "angular-route": "^1.6.0",
+    "express": "^4.14.0",
+    "mopidy": "^0.5.0"
   },
   "devDependencies": {
     "grunt-contrib-copy": "^1.0.0",

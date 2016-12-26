@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       //    mangle: false
       //  },
        files: {
-         'public/scripts/client.min.js': ['client/*.js']
+         'public/scripts/client.min.js': ['client/_dj_sms.module.js', 'client/*.js']
        }
      }
    }
