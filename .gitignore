@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
 mopidy_dir_LK
+npm-debug.log
