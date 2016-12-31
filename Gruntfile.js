@@ -9,8 +9,9 @@ module.exports = function(grunt) {
       main: {
         files: [
           // makes all src relative to cwd
-          {expand: true, cwd: 'node_modules', src: ['angular/angular.min.js',
-          'angular-route/angular-route.min.js'], dest: 'public/vendor'},
+          {expand: true, cwd: 'node_modules', src: ['angular/*',
+          'angular-route/*', 'mopidy/dist/*'],
+          dest: 'public/vendor'},
         ],
       },
     },
