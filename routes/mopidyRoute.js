@@ -1,4 +1,7 @@
+// var express = require('express');
+// var app = express();
 var router = require('express').Router();
+// var bodyParser = require('body-parser');
 var Mopidy = require('mopidy');
 
 var mopidy = new Mopidy({
@@ -20,9 +23,9 @@ var printCurrentTrack = function(track) {
 
 mopidy.on('state:online', function() {
   console.log('Mopidy is online');
-  mopidy.tracklist.getTracks()
-    .done(printCurrentTrack);
 
+  // mopidy.tracklist.getTracks()
+  //   .done(printCurrentTrack);
 
   // mopidy.getTlTracks()
   //   .then(console.log('getTlTracks function successful from within state:online function'))
@@ -40,23 +43,36 @@ mopidy.on('event:tracklistChanged', function() {
 
 
 
-router.get('http://localhost:6680/mopidy/ws', function(request, response) {
-  mopidy.tracklist.add(request.uris[0])
-    .then(console.log('Added item to tracklist:', request.uris[0]))
-    .then(function(tlTracks) {
-      var trackNum = trackNum || 0;
-      return mopidy.playback.play(tlTracks[trackNum])
-      .then(function() {
-        return mopidy.playback.getCurrentTrack()
-        .then(function(track) {
-          console.log('Now playing', trackDesc(track));
-        });
-      });
-    })
-    .catch(console.error.bind(console)) // handles errors
-    .done();
-  response.sendStatus(204);
-  console.log('Response from mopidy.tracklist.add():', response);
+router.all('/new', function(request, response) {
+
+  console.log('The router got new!');
+  console.log('request.body:', request.body);
+  // console.log('request.body:', request.body);
+
+  mopidy.library.search(request.body).then(function(response){
+    mopidy.tracklist.add(request.body);
+    mopidy.playback.play(); // now we are playing music!!!!
+  });
+
+
+
+  // request = bodyParser.json(request);
+  // mopidy.tracklist.add(request)
+  //   .then(console.log('Added item to tracklist:', request))
+  //   .then(function(tlTracks) {
+  //     var trackNum = trackNum || 0;
+  //     return mopidy.playback.play(tlTracks[trackNum])
+  //     .then(function() {
+  //       return mopidy.playback.getCurrentTrack()
+  //       .then(function(track) {
+  //         console.log('Now playing', trackDesc(track));
+  //       });
+  //     });
+  //   })
+  //   .catch(console.error.bind(console)) // handles errors
+  //   .done();
+  // response.sendStatus(204);
+  // console.log('Response from mopidy.tracklist.add():', response);
 });
 
 

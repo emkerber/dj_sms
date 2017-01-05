@@ -23,11 +23,11 @@
       $http.get(spotifyAddress).then(function(response) {
         var spotifyTrack = response.data.tracks.items[0]; // stores the returned URI in a SON variable
         vm.topResult = spotifyTrack; // displays track info on page
-
+        console.log('spotifyTrack.uri:', spotifyTrack.uri);
         var trackData = {};
         trackData.uris = [spotifyTrack.uri];
         console.log('trackData:', trackData);
-        $http.post('http://localhost:6680/mopidy/ws', trackData).then(handleSuccess, handleFailure);
+        $http.post('/new', trackData).then(handleSuccess, handleFailure);
       });
 
       function handleSuccess(response) {
