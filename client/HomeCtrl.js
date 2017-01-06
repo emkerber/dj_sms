@@ -32,10 +32,12 @@
 
       function handleSuccess(response) {
         console.log('Successfully posted track', response);
+        return response;
       }
 
       function handleFailure(response) {
         console.log('Failure posting track', response);
+        return response;
       }
     };
 

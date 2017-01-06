@@ -21,7 +21,7 @@ app.get('/', function(request, response) {
 app.use('/', mopidyRoute);
 
 
-var port = 6680;
+var port = 3000;
 var server = app.listen(port, function() {
   console.log('Server listening on port', server.address().port);
 });
