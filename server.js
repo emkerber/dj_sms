@@ -28,9 +28,11 @@ app.get('/sms', function(request, response) {
   var twilio = require('twilio');
   console.log('inside twilio function');
   var trackRequest = request.body.Body;
-  app.post('/new', trackRequest);
+  app.post('/new', trackRequest).then(
+    response.send(200);
+  );
 
-  // twilio expects a response 
+  // twilio expects a response
   var twiml = new twilio.TwimlResponse();
   twiml.message('Nice, got it!');
   response.writeHead(200, {'Content-Type': 'text/xml'});
