@@ -27,7 +27,13 @@ app.use('/', mopidyRoute);
 app.get('/sms', function(request, response) {
   var twilio = require('twilio');
   console.log('inside twilio function');
-  var trackRequest = request.query.Body;
+
+  // to account for multiple-word searches
+  var smsInput = request.query.body;
+  smsInput = smsInput.split(' ').join('+');
+
+  // the query to be sent to the Spotify API
+  var trackRequest = 'https://api.spotify.com/v1/search?q=' + smsInput + '&limit=1&type=track';
   console.log('trackRequest:', trackRequest);
   app.post('/new', function(response) {
     response.send(trackRequest);

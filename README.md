@@ -10,5 +10,5 @@ You will need the following additional software:
 
 The following must be locally configured:
 
-- your own Twilio account, and its webhook (associated with a GET route)
+- your own Twilio account, and its webhook (associated with a GET route; should point to the ngrok port)
 - your local Mopidy config file, so you are logged into Spotify
