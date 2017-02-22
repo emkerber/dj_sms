@@ -29,7 +29,7 @@ app.get('/sms', function(request, response) {
   console.log('inside twilio function');
 
   // to account for multiple-word searches
-  var smsInput = request.query.body;
+  var smsInput = request.query.Body;
   smsInput.toString();
   smsInput = smsInput.Replace(' ', ' +');
 
