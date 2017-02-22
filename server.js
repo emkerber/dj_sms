@@ -27,7 +27,7 @@ app.use('/', mopidyRoute);
 app.get('/sms', function(request, response) {
   var twilio = require('twilio');
   console.log('inside twilio function');
-  var trackRequest = request;
+  var trackRequest = request.query.Body;
   console.log('trackRequest:', trackRequest);
   app.post('/new', function(response) {
     response.send(trackRequest);
