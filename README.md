@@ -4,7 +4,11 @@ This application was built to be run on a Raspberry Pi using node and npm. After
 
 You will also want to be running a server that's visible to the internet. This can be achieved with ngrok. Instructions for download and use can be found at ngrok.com/download.
 
+You will need the following additional software:
+- Mopidy
+- Mopidy's Spotify extension
+
 The following must be locally configured:
 
 - your own Twilio account, and its webhook (associated with a GET route)
-- 
+- your local Mopidy config file, so you are logged into Spotify
