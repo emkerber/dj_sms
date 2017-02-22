@@ -22,15 +22,19 @@ var mopidyRoute = require('./routes/mopidyRoute');
 app.use('/', mopidyRoute);
 
 // to configure twilio
-var trackRequest = '';
+// var trackRequest = '';
 
 app.get('/sms', function(request, response) {
   var twilio = require('twilio');
-  var twiml = new twilio.TwimlResponse();
-  twiml.response('');
   console.log('inside twilio function');
-  trackRequest = request.body.Body;
+  var trackRequest = request.body.Body;
   app.post('/new', trackRequest);
+
+  // twilio expects a response 
+  var twiml = new twilio.TwimlResponse();
+  twiml.message('Nice, got it!');
+  response.writeHead(200, {'Content-Type': 'text/xml'});
+  response.end(twiml.toString());
 });
 // end twilio config
 
