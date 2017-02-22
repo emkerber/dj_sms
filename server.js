@@ -28,6 +28,7 @@ app.get('/sms', function(request, response) {
   var twilio = require('twilio');
   console.log('inside twilio function');
   var trackRequest = request.body.Body;
+  console.log('trackRequest:', trackRequest);
   app.post('/new', function(response) {
     response.send(trackRequest);
   });
