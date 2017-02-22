@@ -30,6 +30,7 @@ app.get('/sms', function(request, response) {
 
   // to account for multiple-word searches
   var smsInput = request.query.body;
+  smsInput.toString();
   smsInput = smsInput.Replace(' ', ' +');
 
   // the query to be sent to the Spotify API
